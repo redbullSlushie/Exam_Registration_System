@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Registration</title>
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/main.css')}}">
+</head>
+
+<body>
+    <header>
+        <img src="static/images/csn.Logo.png" alt="CSN Logo">
+        <nav>
+            <ul class="navBar">
+                <li>
+                    <a href="/">Home Page</a>
+                </li>
+                <li>
+                    <a href="/contact">Contact Us</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer>
+        <p>Copyright Otter Law 2025</p>
+        <img class="OL" src="static/images/OL.jpg" alt="Otter Law Logo">
+    </footer>
+
+</body>
+
+</html>

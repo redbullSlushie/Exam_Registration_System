@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Registration</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background: #f5f6fa;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            background: #00008B;
+            padding: 60px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 350px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        img.logo {
+            width: 100px;
+            margin-bottom: 15px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        input,
+        select,
+        button {
+            width: 90%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+            /* centers the button */
+        }
+
+        button:hover {
+            background: #2980b9;
+        }
+
+        .error {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .valid {
+            color: green;
+            font-size: 0.9em;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="signupForm">
+        <!-- Logo at the top -->
+
+        <h2 style="text-align:center; font-size:300%;">Sign up</h2>
+
+        <label>Full Name</label>
+        <input type="text" name="fullname" required>
+
+        <label>Email</label>
+        <input type="email" name="email" required>
+
+        <label>Student ID</label>
+        <input type="text" name="student_id" required>
+
+        <label>Password</label>
+        <input type="password" id="password" name="password" required oninput="checkPassword()">
+
+        <label>Confirm Password</label>
+        <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+
+        <button type="submit" style="color:black; background-color:rgb(36, 120, 204);">Register</button>
+
+        <!-- Error and success messages -->
+        <p id="passwordError" class="error">
+            Password must be at least 8 characters long and include:
+            one lowercase letter, one uppercase letter, one number, and one special character (!@#$%^&*).
+        </p>
+        <p id="passwordValid" class="valid">✅ Strong password!</p>
+        <p id="errorMessage" class="error"></p>
+    </form>
+
+    <script>
+        const form = document.getElementById("signupForm");
+        const password = document.getElementById("password");
+        const confirmPassword = document.getElementById("confirmPassword");
+        const errorMessage = document.getElementById("errorMessage");
+
+        function checkPassword() {
+            const error = document.getElementById("passwordError");
+            const valid = document.getElementById("passwordValid");
+            const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/;
+
+            if (!passwordRegex.test(password.value)) {
+                error.style.display = "block";
+                valid.style.display = "none";
+            } else {
+                error.style.display = "none";
+                valid.style.display = "block";
+            }
+        }
+
+        form.addEventListener("submit", function (event) {
+            const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/;
+
+            if (!passwordRegex.test(password.value)) {
+                event.preventDefault();
+                errorMessage.textContent = "❌ Password does not meet requirements.";
+                errorMessage.style.display = "block";
+                return;
+            }
+
+            if (password.value !== confirmPassword.value) {
+                event.preventDefault();
+                errorMessage.textContent = "❌ Passwords do not match!";
+                errorMessage.style.display = "block";
+            } else {
+                errorMessage.textContent = "";
+                alert("✅ Registration Successful!");
+            }
+        });
+    </script>
+
+</body>
+
+</html>

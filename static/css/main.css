@@ -1,0 +1,189 @@
+/* General Styles */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.main {
+    background-color: #050595;
+    ;
+}
+
+header,
+main,
+footer {
+    width: 70%;
+    margin: 10px auto;
+}
+
+ul {
+    list-style: none;
+    display: block flex;
+    justify-content: space-evenly;
+    text-align: center;
+    font-size: 20px;
+    margin: auto;
+    color: white;
+}
+
+div {
+    text-align: center;
+    font-size: 40px;
+    background-color: #050595;
+}
+
+/* Otter Law Image */
+img {
+    height: 20%;
+    width: 20%;
+}
+
+.OL {
+    height: 10%;
+    width: 10%;
+}
+
+/* Layout Page */
+.navBar {
+    list-style: none;
+    display: block flex;
+    justify-content: right;
+    text-align: center;
+    font-size: 20px;
+    margin: auto;
+    border: 5px solid gold;
+}
+
+/* Home Page */
+button {
+    background-color: #050595;
+    font-size: 16px;
+    border-color: gold;
+}
+
+.home-h1 {
+    color: black;
+    text-shadow: -1px -1px 0 gold, 1px -1px 0 gold, -1px 1px 0 gold, 1px 1px 0 gold;
+}
+
+button a {
+    color: gold;
+}
+
+/* Contact Page */
+.contact-h2 {
+    color: white;
+}
+
+.contact {
+    background-color: gold;
+    color: #050595;
+}
+
+/* Login Page */
+.login-body {
+    font-family: Arial, sans-serif;
+    background-color: #f3f3f3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-box {
+    background: blue;
+    padding: 30px;
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+}
+
+.login-box input {
+    width: 92%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.login-box button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #00008B;
+    border: none;
+    color: yellow;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.forgot-button {
+    background-color: transparent;
+    color: #00008B;
+    text-decoration: underline;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    padding: 0;
+}
+
+/* Signup Page */
+.signup-body {
+    font-family: 'Times New Roman', Times, serif;
+    background: #f5f6fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.signup-form {
+    background: #00008B;
+    padding: 60px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    color: #f5f6fa;
+}
+
+.signup-form input,
+select,
+.signup-form button {
+    width: 90%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.signup-button {
+    background: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    /* centers the button */
+}
+
+button:hover {
+    background: #2980b9;
+}
+
+.error {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 10px;
+    display: none;
+}
+
+.valid {
+    color: green;
+    font-size: 0.9em;
+    margin-top: 10px;
+    display: none;
+}
