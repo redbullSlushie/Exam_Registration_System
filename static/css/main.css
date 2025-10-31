@@ -9,7 +9,6 @@
 
 .main {
     background-color: #050595;
-    ;
 }
 
 header,
@@ -32,7 +31,6 @@ ul {
 div {
     text-align: center;
     font-size: 40px;
-    background-color: #050595;
 }
 
 /* Otter Law Image */
@@ -58,7 +56,7 @@ img {
 }
 
 /* Home Page */
-button {
+.home-button button {
     background-color: #050595;
     font-size: 16px;
     border-color: gold;
@@ -67,9 +65,10 @@ button {
 .home-h1 {
     color: black;
     text-shadow: -1px -1px 0 gold, 1px -1px 0 gold, -1px 1px 0 gold, 1px 1px 0 gold;
+    background: #050595;
 }
 
-button a {
+.home-button a {
     color: gold;
 }
 
@@ -186,4 +185,38 @@ button:hover {
     font-size: 0.9em;
     margin-top: 10px;
     display: none;
+}
+
+/* Account Page*/
+hr {
+    background-color: blue;
+}
+
+.stuAcct button {
+    background-color: #050595;
+    border-radius: 10px;
+}
+
+.stuAcct button a {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #050595;
+    border: none;
+    color: yellow;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.stuAcct h3 {
+    text-align: left
+}
+
+.reg {
+    padding: 2px;
+    margin: 10px auto;
+    text-align: left;
+    box-shadow: 0 0 3px 3px #050595;
+    font-size: 150%;
 }
