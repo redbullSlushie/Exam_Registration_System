@@ -1,0 +1,29 @@
+{% extends 'layout_auth.html' %}
+{% block content %}
+<main class="exams_body">
+    <div class="exam_button">
+        <a href="{{url_for('register')}}">Register for a New Exam</a>
+    </div>
+
+
+    <section class="exam-details">
+        {% if bookings %}
+        {% for exam in bookings %}
+        <div class="exam">
+            <h1>Exam: {{exam.exam_type}} - {{exam.exam_id}}</h1>
+            <h2>Location: {{exam.location}}</h2>
+            <h2>Proctor: {{exam.proctor_first}} {{exam.proctor_last}}</h2>
+            <h3>Status: {{exam.session_status}}</h3>
+            <small>Created on: {{exam.created_at}}</small>
+
+            <div class="exam_buttons">
+                <a href="" class="edit_button">Edit</a>
+                <a href="" class="del_button">Delete</a>
+            </div>
+
+        </div>
+        {% endfor %}
+        {% endif %}
+    </section>
+</main>
+{% endblock %}

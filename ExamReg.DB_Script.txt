@@ -1,0 +1,53 @@
+CREATE TABLE user (
+        nshe_id INT,                                              -- Unique user ID                  
+        email VARCHAR(100) NOT NULL UNIQUE,                       -- User's login email
+        role ENUM('Student', 'Faculty') NOT NULL,                 -- Defines user's role
+        first_name VARCHAR(50),                                   -- User's first name
+        last_name VARCHAR(50),                                    -- User's last name
+        exam_amount INT DEFAULT 0,                                -- Number of exams registered
+        PRIMARY KEY (nshe_id)
+);
+
+ALTER TABLE user
+ADD password_hash varchar(255);
+
+CREATE TABLE exam_type (
+        exam_id INT,                                              -- Unique exam ID
+        exam_type VARCHAR(100) NOT NULL,                          -- Name of the exam
+        PRIMARY KEY (exam_id)
+);
+
+CREATE TABLE proctor (
+        proctor_id INT,                                           -- Unique proctor ID
+        first_name VARCHAR(50),                                   -- Proctor's first name
+        last_name VARCHAR(50),                                    -- Proctor's last name
+        email VARCHAR(100) NOT NULL UNIQUE,                       -- Proctor's email
+        phone_number INT,                                         -- Proctor's phone number
+        department VARCHAR(100),                                  -- Department that the proctor belongs to
+        PRIMARY KEY (proctor_id)
+);
+
+CREATE TABLE exam_session (
+        session_id INT,                                           -- Unique session ID
+        session_datetime DATETIME NOT NULL,                       -- Date and time for exam
+        proctor_id INT,                                           -- Links to proctor table
+        exam_id INT,                                              -- Links to exam_type table
+        max_seats INT DEFAULT 20,                                 -- Maximum number of seats per room
+        booked_seats INT DEFAULT 0,                               -- Number of seats currently booked
+        PRIMARY KEY (session_id),
+        FOREIGN KEY (proctor_id) REFERENCES proctor(proctor_id),
+        FOREIGN KEY (exam_id) REFERENCES exam_type(exam_id)
+);
+
+CREATE TABLE bookings (
+		booking_id INT,                                           -- Unique booking ID
+		nshe_id INT,                                              -- Linked to user table
+		session_id INT,                                           -- Linked to exam_session
+		exam_id INT,                                              -- Linked to exam_type
+		status BOOLEAN DEFAULT FALSE,                             -- Current booking status
+		created_at DATETIME default CURRENT_TIMESTAMP,            -- Creates the time when booking occured
+		PRIMARY KEY (booking_id),
+		FOREIGN KEY (nshe_id) REFERENCES user(nshe_id),
+		FOREIGN KEY (exam_id) REFERENCES exam_type(exam_id),
+		FOREIGN KEY (session_id) REFERENCES exam_session(session_id)
+);

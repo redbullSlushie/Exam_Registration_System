@@ -1,0 +1,92 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<main class="confirm"></main>
+
+<body class="confirmation-page">
+
+    <div class="container">
+
+        <h1>Registration successful ✅</h1>
+
+        <h3>Summary:</h3>
+
+        <div class="summary-box">
+            <p><label>Name:</label> {{ name }} </p>
+            <p><label>Email:</label> {{ email }} </p>
+            <p><label>Subject:</label> {{ subject }} </p>
+            <p><label>Location:</label> {{ location }} </p>
+            <p><label>Time:</label> {{ time }} </p>
+        </div>
+
+        <div class="button-row">
+            <a href="/account/student/" class="button">Return to Dashboard</a>
+        </div>
+
+    </div>
+
+</body>
+</main>
+{% endblock %}
+
+
+<!-- <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #f7f7f7;
+            padding-top: 50px;
+        }
+
+        .container {
+            background: rgb(29, 29, 158);
+            width: 60%;
+            margin: auto;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 0 12px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .success-icon {
+            color: green;
+            font-size: 28px;
+        }
+
+        .summary-box {
+            background: rgb(109, 109, 243);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 10px;
+            text-align: left;
+        }
+
+        label {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .button-row {
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        .button {
+            background: #c7c7f8;
+            padding: 12px 20px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 10px;
+            width: 220px;
+        }
+
+        .btn:hover {
+            background: #b1b1f3;
+        }
+    </style> -->

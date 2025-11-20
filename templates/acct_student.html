@@ -10,7 +10,7 @@
 
 <body>
     <header>
-        <img src="static/images/csn.Logo.png" alt="CSN Logo">
+        <img src="{{url_for('static', filename = 'images/csn.Logo.png')}}" alt="CSN Logo">
         <nav>
             <ul class="navBar">
                 <li>
@@ -24,23 +24,26 @@
     </header>
     <main class="stuAcct">
         <div>
-            <h1 class="home-h1">Hello {{users.first_name}}</h1>
+            <h1 class="home-h1">Hello, {{user.first_name}} {{user.last_name}}</h1>
         </div>
         <div class="stuAcct_button">
-            <button><a href="/registrationPage">Register for Exam</a></button>
+            <button><a href="/register">Register for Exam</a></button>
         </div>
 
         <hr>
         <div class="stuAcct">
             <h3>Upcoming Exams:</h3>
         </div>
-        {% for reg in registrations %}
+        {% for reg in bookings %}
         <div class="reg">
             <section>
-                <h3>{{reg.exam_type}} - {{reg.class_name}}</h3> <!-- add a link for exam -->
-                <h4>Exam Date: {{reg.date}} at {{reg.time}}</h4>
+                <a href="{{url_for('exam', id = reg.booking_id)}}">
+                    <h2> Exam: {{reg.exam_id}}</h2> <!-- Link for exam -->
+                </a>
+                <h3>Class: {{reg.exam_type}}</h3>
+                <h4>Exam Date: {{reg.session_datetime.strftime('%B %d, %Y %I:%M %p')}}</h4>
                 <h4>{{reg.location}}</h4>
-                <h4>Proctor: {{reg.proctor}}</h4>
+                <h4>Proctor: {{reg.proctor_first}} {{reg.proctor_last}}</h4>
                 <p>Created at: {{reg.created_at}}</p>
             </section>
         </div>
@@ -49,7 +52,7 @@
     </main>
     <footer>
         <p>Copyright Otter Law 2025</p>
-        <img class="OL" src="static/images/OL.jpg" alt="Otter Law Logo">
+        <img class="OL" src="{{url_for('static', filename = 'images/OL.jpg')}}" alt="Otter Law Logo">
     </footer>
 
 </body>

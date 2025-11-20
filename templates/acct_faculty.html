@@ -14,17 +14,23 @@
         <nav>
             <ul class="navBar">
                 <li>
-                    <a href="/">Home Page</a>
+                    <a href="/contact">Contact Us</a>
                 </li>
                 <li>
-                    <a href="/contact">Contact Us</a>
+                    <a href="/logout">Logout</a>
                 </li>
             </ul>
         </nav>
     </header>
-    <main>
-        {% block content %}
-        {% endblock %}
+    <main class="stuAcct"> <!-- facuAcct -->
+        <div>
+            <h1 class="home-h1">Hello, {{user.first_name}} {{user.last_name}}</h1>
+        </div>
+        <hr>
+        <div class="stuAcct_button">
+            <button><a href="/">View Reports</a></button>
+        </div>
+
     </main>
     <footer>
         <p>Copyright Otter Law 2025</p>

@@ -112,9 +112,9 @@ img {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
-    background-color: #00008B;
+    background-color: #00008b;
     border: none;
-    color: yellow;
+    color: gold;
     font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
@@ -203,20 +203,161 @@ hr {
     margin: 10px 0;
     background-color: #050595;
     border: none;
-    color: yellow;
+    color: gold;
     font-size: 16px;
     border-radius: 5px;
     cursor: pointer;
 }
 
-.stuAcct h3 {
-    text-align: left
-}
-
 .reg {
+    width: 90%;
     padding: 2px;
     margin: 10px auto;
     text-align: left;
     box-shadow: 0 0 3px 3px #050595;
     font-size: 150%;
+}
+
+.reg a {
+    height: 20%;
+}
+
+/* Registration Page */
+.regPage-body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.registration-form {
+    width: 350px;
+    margin: 50px auto;
+    background-color: rgb(29, 29, 158);
+    border-radius: 12px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.registration-form select {
+    width: 100%;
+    padding: 5px;
+    border-radius: 6px;
+    border: 1px solid rgb(85, 85, 231);
+    margin-top: 5px;
+}
+
+.registration-form label {
+    color: white;
+    font-size: 25px;
+    text-align: left;
+}
+
+.registration-form button {
+    display: block;
+    margin: 20px auto 0;
+    padding: 8px 16px;
+    border: none;
+    background-color: rgb(57, 182, 224);
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.registration-form button:hover {
+    background-color: blue;
+}
+
+/* Individual Exam Page */
+.exam {
+    padding: 2px;
+    margin: 10px auto;
+    text-align: left;
+    box-shadow: 0 0 3px 3px #050595;
+    font-size: 20px;
+}
+
+.exam_button a {
+    size: 10px;
+    color: gold;
+    background-color: #050595;
+    border-radius: 10px;
+}
+
+.exam_buttons {
+    size: 50%;
+    padding: 4px 8px;
+}
+
+/* Confirmation Page */
+.confirmation-page body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: #f7f7f7;
+    padding-top: 50px;
+}
+
+.confirmation-page .container {
+    background: rgb(29, 29, 158);
+    width: 60%;
+    margin: auto;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+}
+
+.confirmation-page h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.confirmation-page .success-icon {
+    font-size: 28px;
+    color: green;
+}
+
+.confirmation-page .summary-box {
+    background: rgb(109, 109, 243);
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 10px;
+    text-align: left;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.confirmation-page label {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.confirmation-page .button-row {
+    margin-top: 25px;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.confirmation-page .button {
+    display: inline-block;
+    background: #c7c7f8;
+    color: black;
+    text-decoration: none;
+    padding: 8px 18px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 1;
+    margin: 10px;
+    text-align: center;
+    white-space: nowrap;
+    transition: background 0.2s;
+}
+
+.confirmation-page .button:hover {
+    background: #b1b1f3;
 }
