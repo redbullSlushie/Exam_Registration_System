@@ -1,0 +1,40 @@
+{% extends 'layout_auth_faculty.html' %}
+{% block content %}
+
+<main class="reports">
+    <div>
+        <h2>Student Exam Reports:</h2>
+    </div>
+
+    <section>
+        {% if exams %}
+        {% for session_id, exam in exams.items() %}
+        <div class="report">
+            <h2>Exam: {{exam.exam_type}}</h2>
+            <h3>Location: {{exam.campus_name}} Bldg {{exam.building}} {{exam.room_num}}</h3>
+            <h3>Date: {{exam.date.strftime('%b %d, %Y')}}</h3>
+            <h3>Time: {{exam.start_time}} - {{exam.end_time}}</h3>
+            <h3>Seats: {{exam.booked_seats}} / {{exam.max_seats}}</h3>
+            <h3>Students Booked:</h3>
+
+            {% if exam.students %}
+            <div class="report_stu">
+                <ul>
+                    {% for stu in exam.students %}
+                    <li> - {{stu.last_name}}, {{stu.first_name}} - {{stu.nshe_id}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            {% else %}
+            <p>No Students Booked</p>
+
+            {% endif %}
+        </div>
+
+        {% endfor %}
+        {% endif %}
+    </section>
+</main>
+
+{% endblock %}

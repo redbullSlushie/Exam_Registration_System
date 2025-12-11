@@ -1,42 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'layout_auth_faculty.html' %}
+{% block content %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exam Registration</title>
-    <link rel="stylesheet" href="{{url_for('static', filename = 'css/main.css')}}">
-</head>
+<main class="stuAcct"> <!-- facuAcct -->
+    <div>
+        <h1 class="home-h1">Hello, {{user.first_name}} {{user.last_name}}</h1>
+    </div>
+    <hr>
+    <div class="stuAcct_button">
+        <button><a href="{{url_for('create_exam')}}">Create Exam</a></button>
+        <button><a href="{{url_for('reports')}}">View Reports</a></button>
+    </div>
 
-<body>
-    <header>
-        <img src="{{url_for('static', filename = 'images/csn.Logo.png')}}" alt="CSN Logo">
-        <nav>
-            <ul class="navBar">
-                <li>
-                    <a href="/contact">Contact Us</a>
-                </li>
-                <li>
-                    <a href="/logout">Logout</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
-    <main class="stuAcct"> <!-- facuAcct -->
-        <div>
-            <h1 class="home-h1">Hello, {{user.first_name}} {{user.last_name}}</h1>
-        </div>
-        <hr>
-        <div class="stuAcct_button">
-            <button><a href="/">View Reports</a></button>
-        </div>
+</main>
 
-    </main>
-    <footer>
-        <p>Copyright Otter Law 2025</p>
-        <img class="OL" src="{{url_for('static', filename = 'images/OL.jpg')}}" alt="Otter Law Logo">
-    </footer>
-
-</body>
-
-</html>
+{% endblock %}

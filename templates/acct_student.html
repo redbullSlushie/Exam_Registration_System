@@ -1,60 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'layout_auth_student.html' %}
+{% block content %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exam Registration</title>
-    <link rel="stylesheet" href="{{url_for('static', filename = 'css/main.css')}}">
-</head>
+<main class="stuAcct">
+    <div>
+        <h1 class="home-h1">Hello, {{user.first_name}} {{user.last_name}}</h1>
+    </div>
+    <div class="stuAcct_button">
+        <button><a href="/register">Register for Exam</a></button>
+    </div>
 
-<body>
-    <header>
-        <img src="{{url_for('static', filename = 'images/csn.Logo.png')}}" alt="CSN Logo">
-        <nav>
-            <ul class="navBar">
-                <li>
-                    <a href="/contact">Contact Us</a>
-                </li>
-                <li>
-                    <a href="/logout">Logout</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
-    <main class="stuAcct">
-        <div>
-            <h1 class="home-h1">Hello, {{user.first_name}} {{user.last_name}}</h1>
-        </div>
-        <div class="stuAcct_button">
-            <button><a href="/register">Register for Exam</a></button>
-        </div>
+    <hr>
+    <div class="stuAcct">
+        <h3>Upcoming Exams:</h3>
+    </div>
+    {% for reg in bookings %}
+    {% if reg.session_status != 'Cancelled' %}
+    <div class="reg">
+        <section>
+            <a href="{{url_for('exam', booking_id = reg.booking_id)}}">
+                <h2> Exam: {{reg.exam_id}}</h2> <!-- Link for exam -->
+            </a>
+            <h3>Class: {{reg.exam_type}}</h3>
+            <h4>Exam Date: {{reg.date.strftime('%B %d, %Y')}}</h4>
+            <h4>{{reg.campus_name}} Campus</h4>
+            <h4>Proctor: {{reg.proctor_first}} {{reg.proctor_last}}</h4>
+            <p>Created at: {{reg.created_at}}</p>
+        </section>
+    </div>
+    {% endif %}
+    {% endfor %}
 
-        <hr>
-        <div class="stuAcct">
-            <h3>Upcoming Exams:</h3>
-        </div>
-        {% for reg in bookings %}
-        <div class="reg">
-            <section>
-                <a href="{{url_for('exam', id = reg.booking_id)}}">
-                    <h2> Exam: {{reg.exam_id}}</h2> <!-- Link for exam -->
-                </a>
-                <h3>Class: {{reg.exam_type}}</h3>
-                <h4>Exam Date: {{reg.session_datetime.strftime('%B %d, %Y %I:%M %p')}}</h4>
-                <h4>{{reg.location}}</h4>
-                <h4>Proctor: {{reg.proctor_first}} {{reg.proctor_last}}</h4>
-                <p>Created at: {{reg.created_at}}</p>
-            </section>
-        </div>
-        {% endfor %}
+</main>
 
-    </main>
-    <footer>
-        <p>Copyright Otter Law 2025</p>
-        <img class="OL" src="{{url_for('static', filename = 'images/OL.jpg')}}" alt="Otter Law Logo">
-    </footer>
-
-</body>
-
-</html>
+{% endblock %}

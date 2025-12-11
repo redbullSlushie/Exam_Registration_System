@@ -1,8 +1,7 @@
 {% extends 'layout.html' %}
 {% block content %}
 <main class="signup-body">
-    <form class="signup-form" id="signupForm">
-        <!-- Logo at the top -->
+    <form class="signup-form" id="signupForm" method="post">
 
         <h2 style="text-align:center; font-size:300%; margin-bottom: 20px;">Sign up</h2>
 
@@ -13,63 +12,15 @@
         <input type="email" name="email" required>
 
         <label>Student ID Number</label>
-        <input type="password" id="password" name="password" required oninput="checkPassword()">
+        <input type="password" id="nshe_id" name="nshe_id" required>
 
         <label>Confirm Student ID Number</label>
-        <input type="password" id="confirmPassword" placeholder="Confirm Student ID Number" required>
+        <input type="password" id="confirmed_nshe_id" name="confirmed_nshe_id" placeholder="Confirm Student ID Number"
+            required>
 
         <button class="signup-button" type="submit"
             style="color:black; background-color:rgb(36, 120, 204);">Register</button>
-
-        <!-- Error and success messages -->
-        <p id="passwordError" class="error">
-            Password must be at least 8 characters long and include:
-            one lowercase letter, one uppercase letter, one number, and one special character (!@#$%^&*).
-        </p>
-        <p id="passwordValid" class="valid">✅ Strong password!</p>
-        <p id="errorMessage" class="error"></p>
     </form>
 </main>
-
-<!-- <script>
-    const form = document.getElementById("signupForm");
-    const password = document.getElementById("password");
-    const confirmPassword = document.getElementById("confirmPassword");
-    const errorMessage = document.getElementById("errorMessage");
-
-    function checkPassword() {
-        const error = document.getElementById("passwordError");
-        const valid = document.getElementById("passwordValid");
-        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/;
-
-        if (!passwordRegex.test(password.value)) {
-            error.style.display = "block";
-            valid.style.display = "none";
-        } else {
-            error.style.display = "none";
-            valid.style.display = "block";
-        }
-    }
-
-    form.addEventListener("submit", function (event) {
-        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/;
-
-        if (!passwordRegex.test(password.value)) {
-            event.preventDefault();
-            errorMessage.textContent = "❌ Password does not meet requirements.";
-            errorMessage.style.display = "block";
-            return;
-        }
-
-        if (password.value !== confirmPassword.value) {
-            event.preventDefault();
-            errorMessage.textContent = "❌ Passwords do not match!";
-            errorMessage.style.display = "block";
-        } else {
-            errorMessage.textContent = "";
-            alert("✅ Registration Successful!");
-        }
-    });
-</script> -->
 
 {% endblock %}

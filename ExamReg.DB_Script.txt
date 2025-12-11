@@ -39,15 +39,124 @@ CREATE TABLE exam_session (
         FOREIGN KEY (exam_id) REFERENCES exam_type(exam_id)
 );
 
+ALTER TABLE exam_session
+ADD COLUMN location_id INT,
+ADD CONSTRAINT exam_location_fk
+        FOREIGN KEY (location_id) REFERENCES location(location_id);
+
 CREATE TABLE bookings (
-		booking_id INT,                                           -- Unique booking ID
-		nshe_id INT,                                              -- Linked to user table
-		session_id INT,                                           -- Linked to exam_session
-		exam_id INT,                                              -- Linked to exam_type
-		status BOOLEAN DEFAULT FALSE,                             -- Current booking status
-		created_at DATETIME default CURRENT_TIMESTAMP,            -- Creates the time when booking occured
-		PRIMARY KEY (booking_id),
-		FOREIGN KEY (nshe_id) REFERENCES user(nshe_id),
-		FOREIGN KEY (exam_id) REFERENCES exam_type(exam_id),
-		FOREIGN KEY (session_id) REFERENCES exam_session(session_id)
+	booking_id INT,                                           -- Unique booking ID
+	nshe_id INT,                                              -- Linked to user table
+	session_id INT,                                           -- Linked to exam_session
+	exam_id INT,                                              -- Linked to exam_type
+	status BOOLEAN DEFAULT FALSE,                             -- Current booking status
+	created_at DATETIME default CURRENT_TIMESTAMP,            -- Creates the time when booking occured
+	PRIMARY KEY (booking_id),
+	FOREIGN KEY (nshe_id) REFERENCES user(nshe_id),
+	FOREIGN KEY (exam_id) REFERENCES exam_type(exam_id),
+	FOREIGN KEY (session_id) REFERENCES exam_session(session_id)
 );
+
+CREATE TABLE location (
+        location_id INT,                                        -- Unique location ID  
+        campus_name varchar(50),                                -- Campus Name
+        building varchar(5),                                    -- Building Letter
+        room_num INT,                                           -- Room Number
+        PRIMARY KEY (location_id)
+);
+
+* I had to delete data, to get the exam_id to increment *
+* Deleting Data
+DELETE FROM bookings;
+DELETE FROM exam_session;
+DELETE FROM exam_type;
+
+* Drop foreign keys
+alter table exam_session drop foreign key exam_session_ibfk_2;
+alter table bookings drop foreign key bookings_ibfk_2;
+
+* Alter exam_id to auto increment
+ALTER TABLE exam_type
+MODIFY exam_id INT not NULL AUTO_INCREMENT;
+
+* Reinstate foreign keys
+ALTER TABLE exam_session
+add constraint exam_session_ibfk_2
+foreign key (exam_id) references exam_type(exam_id);
+
+ALTER TABLE bookings
+add constraint bookings_ibfk_2
+foreign key (exam_id) references exam_type(exam_id);
+
+**Replacing session_datetime with start_time, end_time, date**
+* Drop session_datetime column
+alter table exam_session
+drop column session_datetime;
+
+* Add new columns
+alter table exam_session
+add column start_time TIME not NULL,
+add column end_time TIME not NULL,
+add column date DATE not NULL;
+
+* Getting the session_id to auto_increment *
+* Find constraint name
+select constraint_name
+from information_schema.KEY_COLUMN_USAGE
+where table_name = 'bookings' and COLUMN_NAME = 'session_id';
+
+* Drop Foreign keys
+alter table bookings drop foreign key bookings_ibfk_3;
+
+* Alter session_id to auto_increment
+ALTER TABLE exam_session 
+MODIFY session_id INT NOT NULL AUTO_INCREMENT;
+
+* Reinstate foreign keys
+alter table bookings
+add constraint bookings_ibfk_3
+foreign key(session_id) references exam_session(session_id);
+
+* Find constraint name
+select constraint_name
+from information_schema.KEY_COLUMN_USAGE
+where table_name = 'bookings' and COLUMN_NAME = 'nshe_id';
+
+* Drop Foreign keys
+alter table bookings drop foreign key bookings_ibfk_1;
+
+* Alter nshe_id to BIGINT
+ALTER TABLE user
+MODIFY nshe_id BIGINT NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE bookings
+MODIFY nshe_id BIGINT NOT NULL AUTO_INCREMENT;
+
+* Reinstate foreign keys
+alter table bookings
+add constraint bookings_ibfk_1
+foreign key(nshe_id) references user(nshe_id);
+
+** I accidentally auto incremented nshe_id in bookings table **
+* Drop Foreign keys
+alter table bookings drop foreign key bookings_ibfk_1;
+
+* Alter nshe_id and booking_id
+ALTER TABLE bookings
+MODIFY nshe_id BIGINT;
+
+ALTER TABLE bookings 
+MODIFY booking_id INT AUTO_INCREMENT;
+
+* Reinstate foreign keys
+alter table bookings
+add constraint bookings_ibfk_1
+foreign key(nshe_id) references user(nshe_id);
+
+* Add date attribute to 'bookings' table
+ALTER TABLE bookings
+ADD COLUMN time TIME;
+
+** Make proctor_id BIGINT **
+ALTER TABLE proctor
+MODIFY proctor_id BIGINT; 

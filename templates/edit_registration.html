@@ -2,18 +2,20 @@
 {% block content %}
 <main>
     <div>
-        <h2>Register for Exam:</h2>
+        <h2>Edit Registration:</h2>
     </div>
 
     {% if sessions %}
-    <form action="{{url_for('register_exam') }}" method="POST">
+    <form action="{{url_for('edit_exam', booking_id=booking.booking_id) }}" method="POST">
         <div class="registration-form">
             <label for="exam_session">Choose a Session:</label>
-            <select id="session_id" name="session_id">
+            <select id="session_id" name="session_id" required>
+                <option value="">Select Session</option>
                 {% for s in sessions %}
-                <option value="{{s['session_id']}}|{{s['exam_id']}}">
+                <option value="{{s['session_id']}}|{{s['exam_id']}}" {% if s['session_id']==booking.session_id %}
+                    selected {% endif %}>
                     {{ s['exam_type']}} - {{ s['date'].strftime('%b %d, %Y') }} - {{ s['campus_name']}}
-                    Seats: {{s['booked_seats']}} / {{s['max_seats']}}
+                    Seats left: {{s['booked_seats']}} / {{s['max_seats']}}
                 </option>
                 {% endfor %}
             </select>
@@ -21,11 +23,10 @@
 
 
             <label for="time">Choose a Time:</label>
-            <select id="time" name="time">
-                {% for s in sessions %}
-                {% for t in s['available_times'] %}
-                <option value="{{ t }}">{{ t }}</option>
-                {% endfor %}
+            <select id="time" name="time" required>
+                <option value="">Select Time</option>
+                {% for t in available_times %}
+                <option value="{{ t }}" {% if booking.time==t %} selected {% endif %}>{{ t }}</option>
                 {% endfor %}
             </select>
             <br><br>

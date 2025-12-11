@@ -278,7 +278,7 @@ hr {
     font-size: 20px;
 }
 
-.exam_button a {
+.exam_buttons button {
     size: 10px;
     color: gold;
     background-color: #050595;
@@ -288,6 +288,7 @@ hr {
 .exam_buttons {
     size: 50%;
     padding: 4px 8px;
+    display: flex;
 }
 
 /* Confirmation Page */
@@ -360,4 +361,64 @@ hr {
 
 .confirmation-page .button:hover {
     background: #b1b1f3;
+}
+
+/* Create_Exam Page */
+.create_exam {
+    background-color: #050595;
+    color: white;
+    margin: 10px auto;
+}
+
+.create_exam h1 {
+    text-align: center;
+    font-size: 60px;
+}
+
+.create_exam div button {
+    text-align: center;
+    background-color: #050595;
+    color: gold;
+    border-radius: 90px;
+    border-color: gold;
+}
+
+.create_exam div button:hover {
+    background-color: #2980b9;
+}
+
+.create_exam div {
+    text-align: left;
+    font-size: 30px;
+}
+
+.dropdown {
+    display: flex;
+    align-items: center;
+}
+
+.dropdown input[type='checkbox'] {
+    margin-right: 8px;
+}
+
+/* Reports Page */
+.reports section {
+    height: fit-content;
+    display: flexbox;
+}
+
+.report {
+    font-size: 20px;
+    text-align: left;
+    box-shadow: 0 0 3px 3px #050595;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+.reports .report {
+    color: #111;
+}
+
+.reports .report_stu li {
+    color: #111;
 }

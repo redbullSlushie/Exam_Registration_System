@@ -1,0 +1,52 @@
+{% extends 'layout_auth_faculty.html' %}
+{% block content %}
+
+<main class="create_exam">
+    <h1>Create Exam</h1>
+    <form action="{{url_for('create_exam')}}" method="POST">
+
+        <div>
+            <label for="exam_type">Exam Type:</label>
+            <select id="exam_type" name="exam_type" required>
+                <option value="">Select Exam Type</option>
+                <option value="math">Math</option>
+                <option value="cs">Computer Science</option>
+                <option value="english">English</option>
+                <option value="science">Science</option>
+            </select>
+        </div>
+        <div>
+            <label for="date">Date:</label>
+            <input type="date" , id="date" name="date" required>
+        </div>
+        <div class="dropdown">
+            <label for="location">Location:</label>
+            <select name="location" id="location" required>
+                <option value="">Select Location</option>
+                <option value="Henderson">Henderson</option>
+                <option value="North Las Vegas">North Las Vegas</option>
+                <option value="West Charleston">West Charleston</option>
+            </select>
+        </div>
+        <div>
+            <label for="building">Building:</label>
+            <input type="text" placeholder="Enter Building Letter" id="building" name="building" maxlength="1">
+        </div>
+        <div>
+            <label for="room_num">Room Number:</label>
+            <input type="number" placeholder="Enter Room Number" id="room_num" name="room_num">
+        </div>
+        <div>
+            <label for="time">Time Range:</label>
+            <input type="time" name="start_time" min="08:00" max="17:00" required> to
+            <input type="time" name="end_time" min="08:00" max="17:00" required>
+
+
+        </div>
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</main>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% block content %}
+<main class="signup-body">
+    <form class="signup-form" method="POST" action="/faculty_additional">
+
+        <h2 style="text-align:center; font-size:250%; margin-bottom: 20px;">Additional Information Required</h2>
+
+        <input type="hidden" name="fullname" value="{{ fullname }}">
+        <input type="hidden" name="email" value="{{ email }}">
+        <input type="hidden" name="nshe_id" value="{{ nshe_id }}">
+
+        <label>Phone Number</label>
+        <input type="text" name="phone_number" required>
+
+        <label>Department</label>
+        <input type="text" name="department" required>
+
+        <button class="signup-button" type="submit"
+            style="color:black; background-color:rgb(36, 120, 204);">Continue</button>
+
+    </form>
+</main>
+{% endblock %}
